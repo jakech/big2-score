@@ -1,0 +1,1 @@
+angular.module('big2score', ['ui-router']);

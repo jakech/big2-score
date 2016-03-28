@@ -1,2 +1,7 @@
 # modules
 node_modules
+
+# compiled files
+public/scripts
+public/styles
+public/fonts
