@@ -13,5 +13,8 @@
     "angular": "^1.5.3",
     "bootstrap": "^3.3.6",
     "ui-router": "^1.0.0-alpha0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
   }
 }
