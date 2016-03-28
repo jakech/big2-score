@@ -2,15 +2,29 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var browserSync = require('browser-sync').create();
 
+
+// HTML
+gulp.task('html', function() {
+  return gulp.src('app/pages/*.html')
+    .pipe(gulp.dest('public/pages'));
+});
+gulp.task('html-watch', ['html'], function(){
+  browserSync.reload();
+});
+
+// JS
 gulp.task('js', function () {
   return gulp.src('app/**/*.js')
     .pipe(concat('app.js'))
     // .pipe(uglify())
     .pipe(gulp.dest('public/scripts'));
 });
+gulp.task('js-watch', ['js'], function(){
+  browserSync.reload();
+});
 
-gulp.task('js-watch', ['js'], browserSync.reload);
 
+// Vendors
 gulp.task('bootstrap', function() {
   gulp.src('node_modules/bootstrap/dist/css/bootstrap.css')
     .pipe(gulp.dest('public/styles'));
@@ -27,6 +41,7 @@ gulp.task('angular', function() {
   .pipe(gulp.dest('public/scripts'));
 });
 
+// Main
 gulp.task('default', function() {
   browserSync.init({
     server: {
@@ -34,5 +49,6 @@ gulp.task('default', function() {
     }
   });
 
+  gulp.watch('app/pages/*.html', ['html-watch']);
   gulp.watch('app/**/*.js', ['js-watch']);
 });

@@ -1,1 +1,3 @@
-angular.module('big2score', ['ui-router']);
+angular.module('big2score', [
+  'big2score.routes'
+]);
