@@ -1,4 +1,4 @@
-# Big2Score #
+# Big2 Score #
 
 > Reserve your brain power for the card game instead of doing math
 
