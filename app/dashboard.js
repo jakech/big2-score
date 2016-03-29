@@ -14,8 +14,10 @@ angular.module('big2score.dashboard')
 
   // setup view
   vm.game = game;
-  vm.tally = function() {
-    
+  vm.tally = function(form) {
+    form.$setUntouched();
+    form.$setPristine();
+
     var round = _.map(players, function(player) {
       var numOfCards = player.numOfCards;
       player.numOfCards = ''; //reset input

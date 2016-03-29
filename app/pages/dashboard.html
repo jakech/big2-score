@@ -1,6 +1,5 @@
 <div>
-  <pre><code>{{ scoreForm | json }}</code></pre>
-  <form name="scoreForm" novalidate class="container panel panel-default" ng-submit="scoreForm.$valid && dashboard.tally()">
+  <form name="scoreForm" novalidate class="container panel panel-default" ng-submit="scoreForm.$valid && dashboard.tally(scoreForm)">
     <div class="row panel-body">
       <div class="col-xs-3" ng-repeat="player in dashboard.game.players">
         <h3 ng-click="player.changeName()">
@@ -10,13 +9,15 @@
           <li class="fl">Total: <span>{{ player.total }}</span></li>
           <li class="fr">Score: {{ player.score }}</li>
         </ul>
-        <input class="form-control" type="number" placeholder="Number of cards..." ng-model="player.numOfCards" required integer max="13" min="0">
+        <div ng-class="{'has-success': scoreForm[player.id].$valid ,'has-error': scoreForm[player.id].$invalid && scoreForm[player.id].$touched}">
+        <input class="form-control" name="{{player.id}}" type="number" placeholder="Number of cards..." ng-model="player.numOfCards"  required integer max="13" min="0">
+        </div>
       </div>
     </div>
     <div class="row panel-footer">
       <button class="btn btn-success" type="submit" ng-disabled="scoreForm.$invalid && scoreForm.$dirty">Submit Scores</button>
 
-      <span class="text-warning" ng-show="scoreForm.$invalid && scoreForm.$dirty">check your inputs</span>
+      <span class="text-danger" ng-show="scoreForm.$invalid && scoreForm.$dirty">check your inputs</span>
     </div>
   </form>
   <section class="container">
