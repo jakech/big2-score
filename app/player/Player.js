@@ -1,6 +1,5 @@
-angular.module('big2score.player', []);
-
 (function () {
+  angular.module('big2score.player', []);
 
   angular.module('big2score.player').factory('players', function() {
     function makePlayers(arrayOfNames) {
@@ -24,7 +23,7 @@ angular.module('big2score.player', []);
   });
 
   function Player(name) {
-    this.score = 0;
+    this.total = 0;
     this.name = name || chance.name();
 
     this.changeName = function() {
@@ -33,5 +32,4 @@ angular.module('big2score.player', []);
       this.name = name || this.name;
     };
   }
-
 })();
