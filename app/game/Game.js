@@ -10,16 +10,28 @@
     this.rounds = [];
     this.players = players;
 
-    this.tallyScores = function(scoreArray) {
+    this.tallyScores = function(cardsArray) {
       // array of numOfCards according to player's position
       var self = this;
-      _.each(scoreArray,function(score, index) {
-        self.players[index].total += score;
+
+      // [3,4,5,0]
+      _.each(cardsArray, function(numOfCards, index) {
+        self.players[index].total += numOfCards;
       });
 
-      scoreArray.created = Date.now();
+      // calculate score
+      for(var i = 0; i < cardsArray.length; i++) {
+        for(var j = 0; j < cardsArray.length; j++) {
+          var score = cardsArray[j] - cardsArray[i];
+          console.log(score);
+          this.players[i].score += score;
+        }
+      }
 
-      this.rounds.push(scoreArray);
+      cardsArray.created = Date.now();
+
+      this.rounds.push(cardsArray);
     }
+
   }
 })();
