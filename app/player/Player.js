@@ -25,6 +25,7 @@
   function Player(name) {
     this.total = 0;
     this.name = name || chance.name();
+    this.avatar = chance.avatar();
 
     this.changeName = function() {
       var name = window.prompt();
