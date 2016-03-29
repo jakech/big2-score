@@ -1,9 +1,9 @@
-angular.module('big2score.dashboard', []);
+angular.module('big2score.dashboard', ['big2score.player']);
 
 angular.module('big2score.dashboard')
-  .controller('dashboardCtrl', function() {
+  .controller('dashboardCtrl', function(players) {
   
   var vm = this;
   
-  vm.display = '123';
+  vm.players = players([false, false, false, false]);
 });
