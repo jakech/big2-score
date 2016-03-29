@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var shell = require('gulp-shell');
 var del = require('del');
 var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
@@ -74,4 +75,11 @@ gulp.task('default', function() {
 });
 
 // Deploy
-gulp.task('deploy', ['build']);
+gulp.task('deploy', ['build'], shell.task([
+  'git checkout -b dist',
+  'git add -f ./public',
+  'git commit -m "Adding dist files"',
+  'git push heroku dist:master --force',
+  'git checkout master',
+  'git branch -D dist'
+]));
