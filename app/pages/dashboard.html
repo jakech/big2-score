@@ -22,7 +22,7 @@
         <tr>
           <th class="w-20" ng-repeat="player in dashboard.game.players">{{ player.name }}</th>
         </tr>
-        <tr ng-repeat="round in dashboard.game.rounds | orderBy : reverse">
+        <tr ng-repeat="round in dashboard.game.rounds | orderBy : '-created'">
           <td>{{ round[0] }}</td>
           <td>{{ round[1] }}</td>
           <td>{{ round[2] }}</td>

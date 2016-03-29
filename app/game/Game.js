@@ -17,6 +17,8 @@
         self.players[index].total += score;
       });
 
+      scoreArray.created = Date.now();
+
       this.rounds.push(scoreArray);
     }
   }
