@@ -1,5 +1,6 @@
 <div>
-  <section class="container panel panel-default">
+  <pre><code>{{ scoreForm | json }}</code></pre>
+  <form name="scoreForm" novalidate class="container panel panel-default" ng-submit="scoreForm.$valid && dashboard.tally()">
     <div class="row panel-body">
       <div class="col-xs-3" ng-repeat="player in dashboard.game.players">
         <h3 ng-click="player.changeName()">
@@ -9,13 +10,15 @@
           <li class="fl">Total: <span>{{ player.total }}</span></li>
           <li class="fr">Score: {{ player.score }}</li>
         </ul>
-        <input class="form-control" type="number" placeholder="Number of cards..." ng-model="player.numOfCards">
+        <input class="form-control" type="number" placeholder="Number of cards..." ng-model="player.numOfCards" required integer max="13" min="0">
       </div>
     </div>
     <div class="row panel-footer">
-      <button class="btn btn-success" ng-click="dashboard.tally()">Submit Scores</button>
+      <button class="btn btn-success" type="submit" ng-disabled="scoreForm.$invalid && scoreForm.$dirty">Submit Scores</button>
+
+      <span class="text-warning" ng-show="scoreForm.$invalid && scoreForm.$dirty">check your inputs</span>
     </div>
-  </section>
+  </form>
   <section class="container">
     <div class="row">
       <table class="table table-bordered table-striped table-hover">

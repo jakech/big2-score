@@ -11,26 +11,25 @@ gulp.task('clean', function() {
 });
 
 // HTML
-gulp.task('html', ['clean'], function() {
+function html() {
   return gulp.src('app/pages/*.html')
     .pipe(gulp.dest('public/pages'));
-});
-gulp.task('html-watch', ['html'], function(){
-  browserSync.reload();
-});
+}
+
+gulp.task('html', ['clean'], html);
+gulp.task('html-watch', html);
 
 // JS
-gulp.task('js', ['clean'], function () {
+function scripts() {
   return gulp.src('app/**/*.js')
     .pipe(sourcemaps.init())
     .pipe(concat('app.js'))
     // .pipe(uglify())
     .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest('public/scripts'));
-});
-gulp.task('js-watch', ['js'], function(){
-  browserSync.reload();
-});
+}
+gulp.task('js', ['clean'], scripts);
+gulp.task('js-watch', ['js'], scripts);
 
 
 // Vendors
@@ -72,6 +71,7 @@ gulp.task('default', ['build'], function() {
 
   gulp.watch('app/pages/*.html', ['html-watch']);
   gulp.watch('app/**/*.js', ['js-watch']);
+  gulp.watch(['app/pages/*.html', 'app/**/*.js'], browserSync.reload);
 });
 
 // Deploy
