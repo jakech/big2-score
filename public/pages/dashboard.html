@@ -19,7 +19,7 @@
           <th>2</th>
           <th>3</th>
         </tr>
-        <tr ng-repeat="round in dashboard.game.rounds">
+        <tr ng-repeat="round in dashboard.game.rounds | orderBy : reverse">
           <td>{{ round[0] }}</td>
           <td>{{ round[1] }}</td>
           <td>{{ round[2] }}</td>
