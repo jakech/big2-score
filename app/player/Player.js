@@ -25,7 +25,7 @@
   function Player(name) {
     this.total = 0;
     this.score = 0;
-    this.name = name || chance.name();
+    this.name = name || chance.first();
     this.avatar = chance.avatar();
 
     this.changeName = function() {
