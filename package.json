@@ -12,8 +12,10 @@
   "dependencies": {
     "angular": "^1.5.3",
     "bootstrap": "^3.3.6",
+    "chance": "^1.0.1",
     "express": "^4.13.4",
-    "ui-router": "^1.0.0-alpha0"
+    "ui-router": "^1.0.0-alpha0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "browser-sync": "^2.11.2",

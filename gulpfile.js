@@ -33,11 +33,14 @@ gulp.task('bootstrap', function() {
     .pipe(gulp.dest('public/fonts'));
 });
 
-gulp.task('angular', function() {
+gulp.task('vendors', function() {
   gulp.src([
+    'node_modules/underscore/underscore.min.js',
+    'node_modules/chance/dist/chance.min.js',
     'node_modules/angular/angular.js',
-    'node_modules/ui-router/release/angular-ui-router.js'
+    'node_modules/ui-router/release/angular-ui-router.js',
   ])
+  .pipe(concat('vendors.js'))
   .pipe(gulp.dest('public/scripts'));
 });
 
