@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
+var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 
 
@@ -15,8 +16,10 @@ gulp.task('html-watch', ['html'], function(){
 // JS
 gulp.task('js', function () {
   return gulp.src('app/**/*.js')
+    .pipe(sourcemaps.init())
     .pipe(concat('app.js'))
     // .pipe(uglify())
+    .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest('public/scripts'));
 });
 gulp.task('js-watch', ['js'], function(){
