@@ -2,7 +2,11 @@
   <section class="container panel panel-default">
     <div class="row panel-body">
       <div class="col-xs-3" ng-repeat="player in dashboard.game.players">
-        <h3 ng-click="player.changeName()">{{ player.name }}</h3>
+        <h3 ng-click="player.changeName()"><i class="glyphicon glyphicon-user"></i> {{ player.name }}</h3>
+        <ul class="list pl0 cf">
+          <li class="fl">Total: <span>{{ player.total }}</span></li>
+          <li class="fr">$:100</li>
+        </ul>
         <input class="form-control" type="number" placeholder="Score..." ng-model="player.score">
       </div>
     </div>
@@ -14,7 +18,7 @@
     <div class="row">
       <table class="table table-bordered table-striped table-hover">
         <tr>
-          <th ng-repeat="player in dashboard.game.players">{{ player.total }}</th>
+          <th ng-repeat="player in dashboard.game.players">{{ player.name }}</th>
         </tr>
         <tr ng-repeat="round in dashboard.game.rounds | orderBy : reverse">
           <td>{{ round[0] }}</td>
