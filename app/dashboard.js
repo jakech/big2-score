@@ -15,6 +15,26 @@ angular.module('big2score.dashboard')
   // setup view
   vm.game = game;
   vm.tally = function(form) {
+    console.log(form);
+    
+    var numOfZero = 0;
+
+    _.each(form, function(item) {
+      if(!item || item.$viewValue === undefined) {
+        return;
+      }
+      // use coerion
+      if(item.$viewValue == 0) {
+        numOfZero += 1;
+      }
+    });
+
+    if(numOfZero !== 1) {
+      // form.$setValidity('gameError', false);
+      alert('Game must have only one winning player,\nand he/she must have ZERO cards.');
+      return;
+    }
+
     form.$setUntouched();
     form.$setPristine();
 
@@ -28,6 +48,8 @@ angular.module('big2score.dashboard')
   }
 });
 
+
+// integer validation
 angular.module('big2score.dashboard')
   .directive('integer', function() {
   var INTEGER_REGEXP = /^\-?\d+$/;

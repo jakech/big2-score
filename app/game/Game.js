@@ -23,7 +23,6 @@
       for(var i = 0; i < cardsArray.length; i++) {
         for(var j = 0; j < cardsArray.length; j++) {
           var score = cardsArray[j] - cardsArray[i];
-          console.log(score);
           this.players[i].score += score;
         }
       }

@@ -71,7 +71,7 @@ gulp.task('default', ['build'], function() {
 
   gulp.watch('app/pages/*.html', ['html-watch']);
   gulp.watch('app/**/*.js', ['js-watch']);
-  gulp.watch(['app/pages/*.html', 'app/**/*.js'], browserSync.reload);
+  gulp.watch(['public'], browserSync.reload);
 });
 
 // Deploy
