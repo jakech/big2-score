@@ -17,9 +17,9 @@ angular.module('big2score.dashboard')
   vm.tally = function() {
     
     var round = _.map(players, function(player) {
-      var score = player.score;
-      player.score = ''; //reset input
-      return score;
+      var numOfCards = player.numOfCards;
+      player.numOfCards = ''; //reset input
+      return numOfCards;
     });
 
     game.tallyScores(round);

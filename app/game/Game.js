@@ -11,7 +11,7 @@
     this.players = players;
 
     this.tallyScores = function(scoreArray) {
-      // array of scores according to player's position
+      // array of numOfCards according to player's position
       var self = this;
       _.each(scoreArray,function(score, index) {
         self.players[index].total += score;

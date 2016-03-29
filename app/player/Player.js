@@ -24,6 +24,7 @@
 
   function Player(name) {
     this.total = 0;
+    this.score = 0;
     this.name = name || chance.name();
     this.avatar = chance.avatar();
 
