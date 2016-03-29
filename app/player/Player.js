@@ -26,6 +26,12 @@ angular.module('big2score.player', []);
   function Player(name) {
     this.score = 0;
     this.name = name || chance.name();
+
+    this.changeName = function() {
+      var name = window.prompt();
+
+      this.name = name || this.name;
+    };
   }
 
 })();

@@ -2,7 +2,7 @@
   <section class="container panel panel-default">
     <div class="row panel-body">
       <div class="col-xs-3" ng-repeat="player in dashboard.players">
-        <h3>{{ player.name }}</h3>
+        <h3 ng-click="player.changeName()">{{ player.name }}</h3>
         <input class="form-control" type="number" placeholder="Score...">
       </div>
     </div>

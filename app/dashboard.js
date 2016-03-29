@@ -5,5 +5,6 @@ angular.module('big2score.dashboard')
   
   var vm = this;
   
+  // new game
   vm.players = players([false, false, false, false]);
 });
