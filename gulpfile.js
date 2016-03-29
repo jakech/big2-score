@@ -63,7 +63,7 @@ gulp.task('vendors', ['bootstrap', 'tachyons'], function() {
 gulp.task('build', ['vendors', 'js', 'html']);
 
 // Main
-gulp.task('default', function() {
+gulp.task('default', ['build'], function() {
   browserSync.init({
     server: {
       baseDir: './public'
