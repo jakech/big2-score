@@ -12,12 +12,9 @@
   </section>
   <section class="container">
     <div class="row">
-      <table class="table">
+      <table class="table table-bordered table-striped table-hover">
         <tr>
-          <th>13</th>
-          <th>12</th>
-          <th>2</th>
-          <th>3</th>
+          <th ng-repeat="player in dashboard.game.players">{{ player.total }}</th>
         </tr>
         <tr ng-repeat="round in dashboard.game.rounds | orderBy : reverse">
           <td>{{ round[0] }}</td>
