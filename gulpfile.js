@@ -1,11 +1,16 @@
 var gulp = require('gulp');
+var del = require('del');
 var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 
+// Clean
+gulp.task('clean', function() {
+  del.sync(['./public/**/*.*', '!./public/index.html']);
+});
 
 // HTML
-gulp.task('html', function() {
+gulp.task('html', ['clean'], function() {
   return gulp.src('app/pages/*.html')
     .pipe(gulp.dest('public/pages'));
 });
@@ -14,7 +19,7 @@ gulp.task('html-watch', ['html'], function(){
 });
 
 // JS
-gulp.task('js', function () {
+gulp.task('js', ['clean'], function () {
   return gulp.src('app/**/*.js')
     .pipe(sourcemaps.init())
     .pipe(concat('app.js'))
@@ -28,7 +33,7 @@ gulp.task('js-watch', ['js'], function(){
 
 
 // Vendors
-gulp.task('bootstrap', function() {
+gulp.task('bootstrap', ['clean'], function() {
   gulp.src('node_modules/bootstrap/dist/css/bootstrap.css')
     .pipe(gulp.dest('public/styles'));
 
@@ -36,7 +41,7 @@ gulp.task('bootstrap', function() {
     .pipe(gulp.dest('public/fonts'));
 });
 
-gulp.task('tachyons', function() {
+gulp.task('tachyons', ['clean'], function() {
   gulp.src('node_modules/tachyons/css/tachyons.min.css')
     .pipe(gulp.dest('public/styles'));
 });
@@ -53,6 +58,9 @@ gulp.task('vendors', ['bootstrap', 'tachyons'], function() {
   .pipe(gulp.dest('public/scripts'));
 });
 
+// Build
+gulp.task('build', ['vendors', 'js', 'html']);
+
 // Main
 gulp.task('default', function() {
   browserSync.init({
@@ -64,3 +72,6 @@ gulp.task('default', function() {
   gulp.watch('app/pages/*.html', ['html-watch']);
   gulp.watch('app/**/*.js', ['js-watch']);
 });
+
+// Deploy
+gulp.task('deploy', ['build']);
