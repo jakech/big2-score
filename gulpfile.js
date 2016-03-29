@@ -36,7 +36,13 @@ gulp.task('bootstrap', function() {
     .pipe(gulp.dest('public/fonts'));
 });
 
-gulp.task('vendors', function() {
+gulp.task('tachyons', function() {
+  gulp.src('node_modules/tachyons/css/tachyons.min.css')
+    .pipe(gulp.dest('public/styles'));
+});
+
+
+gulp.task('vendors', ['bootstrap', 'tachyons'], function() {
   gulp.src([
     'node_modules/underscore/underscore-min.js',
     'node_modules/chance/dist/chance.min.js',
