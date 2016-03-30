@@ -1,15 +1,41 @@
 (function () {
   angular.module('big2score.game', []);
 
-  angular.module('big2score.game').factory('game', function() {
-    return Game;
+  angular.module('big2score.game').config(function(gameProvider) {
+    if(localStorage.getItem('big2score_data')) {
+      var game = JSON.parse(localStorage.getItem('big2score_data'));
+      var players = game.players;
+
+      console.log('game ', game);
+      console.log('players ', players);
+
+      gameProvider.loadPlayers(players);
+      gameProvider.loadHistory(game.rounds);
+    }
   });
 
-  function Game(players) {
-    this.created = Date.now();
-    this.rounds = [];
-    this.players = players;
+  angular.module('big2score.game').provider('game', function() {
+    var rounds;
+    var playerNames = [false, false, false, false]; // let Player generate random name
 
+
+    this.loadPlayers = function(playerNames) {
+      playerNames = playerNames;
+    };
+
+    this.loadHistory = function(rounds) {
+      rounds = rounds;
+    }
+
+    this.$get = function(players) {
+      return new Game(players(playerNames), rounds);
+    };
+  });
+
+  function Game(players, rounds) {
+    this.created = Date.now();
+    this.rounds = rounds || [];
+    this.players = players || [];
     this.tallyScores = function(cardsArray) {
       // array of numOfCards according to player's position
       var self = this;
@@ -46,7 +72,7 @@
     }
 
     this.save = function() {
-      var name = 'big2score_'+this.created;
+      var name = 'big2score_data';
       var data = JSON.stringify(this);
       console.log('>>>>>');
       console.log('Saving game... '+ name);

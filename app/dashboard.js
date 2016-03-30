@@ -7,15 +7,15 @@ angular.module('big2score.dashboard')
   .controller('dashboardCtrl', function(game, players) {
   
   var vm = this;
-  var players = players([false, false, false, false]);
+
+  // var players = players([false, false, false, false]);
   
   // new game
-  var game = new game(players);
+  // var game = new game(players);
 
   // setup view
   vm.game = game;
   vm.tally = function(form) {
-    console.log(form);
     
     var numOfZero = 0;
 
@@ -47,6 +47,7 @@ angular.module('big2score.dashboard')
     game.tallyScores(round);
     game.save();
   }
+
 });
 
 
