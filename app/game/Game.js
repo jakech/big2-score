@@ -15,8 +15,21 @@
       var self = this;
 
       // [3,4,5,0]
-      _.each(cardsArray, function(numOfCards, index) {
-        self.players[index].total += numOfCards;
+      cardsArray = _.map(cardsArray, function(numOfCards, index) {
+        var cards = numOfCards;
+        
+        // fried
+        if(numOfCards > 10) {
+          if(numOfCards <= 12) {
+            cards = numOfCards * 2
+          } else {
+            cards = numOfCards * 3
+          }
+        }
+
+        self.players[index].total += cards;
+
+        return cards;
       });
 
       // calculate score
