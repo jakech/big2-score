@@ -45,5 +45,16 @@
       this.rounds.push(cardsArray);
     }
 
+    this.save = function() {
+      var name = 'big2score_'+this.created;
+      var data = JSON.stringify(this);
+      console.log('>>>>>');
+      console.log('Saving game... '+ name);
+      console.log(data);
+      console.log('>>>>>');
+
+      window.localStorage.setItem(name, data);
+    }
+
   }
 })();

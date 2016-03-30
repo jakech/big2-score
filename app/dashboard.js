@@ -45,6 +45,7 @@ angular.module('big2score.dashboard')
     });
 
     game.tallyScores(round);
+    game.save();
   }
 });
 
