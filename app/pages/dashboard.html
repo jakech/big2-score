@@ -10,7 +10,7 @@
           <li class="fr">Score: {{ player.score }}</li>
         </ul>
         <div ng-class="{'has-success': scoreForm[player.id].$valid ,'has-error': scoreForm[player.id].$invalid && scoreForm[player.id].$touched}">
-        <input class="form-control" name="{{player.id}}" type="number" placeholder="Number of cards..." ng-model="player.numOfCards" required integer max="13" min="0">
+        <input class="form-control" name="{{player.id}}" type="number" placeholder="Number of cards..." ng-model="player.numOfCards" required integer max="13" min="0" sync-focus-with="$first && !scoreForm.$submitted">
         </div>
       </div>
     </div>
