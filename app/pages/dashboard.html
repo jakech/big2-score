@@ -6,8 +6,8 @@
           <img class="w3" ng-src="{{ player.avatar }}"> {{ player.name }}
         </h3>
         <ul class="list pl0 cf">
-          <li class="fl">Total: <span>{{ player.total }}</span></li>
-          <li class="fr">Score: {{ player.score }}</li>
+          <li class="fl">Total: <span class="f2">{{ player.total }}</span></li>
+          <li class="fr">Score: <span class="f2">{{ player.score }}</span></li>
         </ul>
         <div ng-class="{'has-success': scoreForm[player.id].$valid ,'has-error': scoreForm[player.id].$invalid && scoreForm[player.id].$touched}">
         <input class="form-control" name="{{player.id}}" type="number" placeholder="Number of cards..." ng-model="player.numOfCards" required integer max="13" min="0" sync-focus-with="$first && !scoreForm.$submitted">
